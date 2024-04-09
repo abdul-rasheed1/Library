@@ -1,0 +1,62 @@
+<!Doctype html>
+<html>
+	<head lang="en">
+		<meta charset="UTF-8">
+		<meta name="viewport" content="width = device-width initial-scale = 1.0">
+		<link rel="stylesheet" href="styles.css">
+
+	</head>
+	<body class="container">
+		<section class="sec1 perim">
+		<div>
+			<button id="open-dialog">ADD BOOK</button>
+			<dialog id="dialo">
+				<h2>hey</h2>
+				<form action="myself.com" method="POST" id="book-info-form">
+					<label for="title">Book Title</label>
+					<input type="text" required id="title">
+					<br>
+					<label for="auth">Book Author</label>
+					<input type="text" required id="auth">
+					<br>
+					<label for="pag">Number Of Pages</label>
+					<input type="number" required id="pag">
+					<br>
+
+					What is the read status of the book
+					<br>
+
+					<label>
+					<input type="radio" name="red" value="Read">
+					Read
+				    </label>
+
+				    <br>
+				    <label>
+				    	<input type="radio" name="red" value="In progress">
+				    	In progress
+				    </label>
+
+				    <br>
+				    <label>
+				    	<input type="radio" name="red" value="Yet to read">
+				    	Yet to read
+				    </label>
+
+					<br>
+				<button id="clo" type="submit">Submit</button>
+				</form>
+			</dialog>
+		</div>
+			
+		</section>
+		<section class="sec2 perim">
+
+			<div class="shelf perim">
+				
+			</div>
+			
+		</section>
+		<script src="libcode.js"></script>
+	</body>
+</html>
