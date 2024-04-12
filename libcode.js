@@ -30,21 +30,28 @@ for(let i = 0; i < libArr.length ; i++){
 	let titletxtnd = document.createTextNode(`Title : ${titletxt}`);
 	let authtxtnd = document.createTextNode(`Author: ${authtxt}`);
 	let pagetxtnd = document.createTextNode(`Pages: ${pagetxt}`);
+	let buttond = document.createTextNode(`remove book`);
 
 
 	titlelmnt = document.createElement("h5");
 	authelmnt = document.createElement("h5");
 	pagelmnt = document.createElement("h5");
 	let bookcard = document.createElement('div');
+	let button = document.createElement("button");
+	button.setAttribute(`id`,`${i}`);
+	button.setAttribute(`class`, `remove`);
+	//console.log(bookcard.getAttribute('class'));
 
 
 
 	titlelmnt.appendChild(titletxtnd);
 	authelmnt.appendChild(authtxtnd);
 	pagelmnt.appendChild(pagetxtnd);
+	button.appendChild(buttond);
 	bookcard.appendChild(titlelmnt);
 	bookcard.appendChild(authelmnt);
 	bookcard.appendChild(pagelmnt);
+	bookcard.appendChild(button);
 	shelf.appendChild(bookcard);
 	countcheck++;
 
@@ -54,6 +61,17 @@ for(let i = 0; i < libArr.length ; i++){
 }
 }
 }
+
+
+/*let book_to_remove = document.querySelector('.remove'); 
+
+function remove_book(){
+	let item_no = book_to_remove.getAttribute("id");
+	parseInt(item_no);
+	libArr.splice(item_no,1);
+
+}
+*/
 
 const open    = document.getElementById('open-dialog');
 const dialoge = document.getElementById('dialo');
@@ -81,4 +99,22 @@ bookform.addEventListener('submit', (event) => {
 	
 });
 
+shelf.addEventListener('click', (event) => {
+	let elmnt = event.target;
+	if (elmnt.textContent == "remove book"){
+		let no = elmnt.id;
+		let real = parseInt(no);
+		console.log(no);
+		libArr.splice(real,1);
+		let no_in_dom = real + 1;
+		shelf.removeChild(shelf.childNodes[no_in_dom]);
+		countcheck--;
+		let button_arr = document.querySelectorAll('.remove');
+		for (let r=0;r < button_arr.length; r++){
+			button_arr[r].setAttribute('id',`${r}`);
+		}
+	}
 
+});
+
+//book_to_remove.addEventListener('click',remove_book());
