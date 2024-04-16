@@ -1,10 +1,30 @@
 
 
 
-function Book(title,author,page){
+function Book(title,author,page,read){
 	this.title = title;
 	this.author = author;
 	this.page = page;
+	this.read = read;
+}
+
+Book.prototype.book_status = function(user){
+	const read_arr = [`READ`,`IN PROGRESS`,`NOT READ`];
+	let status;
+	if (user == read_arr[0]){
+		this.read = read_arr[1];
+		status = read_arr[1];
+	}
+	else if (user == read_arr[1]){
+		this.read = read_arr[2];
+		status = read_arr[2];
+	}
+	else if (user == read_arr[2]){
+		this.read = read_arr[0];
+		status = read_arr[0];
+	}
+	//console.log(status);
+	return status;
 }
 
 
@@ -15,9 +35,10 @@ function addBookToLib(){
 	const tytl = document.querySelector("#title").value;
 	const auth = document.querySelector("#auth").value;
 	const pag = document.querySelector("#pag").value;
-	const book = new Book(tytl,auth,pag);
+	const read_status = document.querySelector('input[name="red"]:checked').value;
+	const book = new Book(tytl,auth,pag,read_status);
 	libArr.push(book);
-	//console.log(libArr[0]);
+	//console.log(read_status);
 }
 
 let countcheck = 0;
@@ -26,16 +47,20 @@ function displaylib(){
 
 for(let i = 0; i < libArr.length ; i++){
 	if (i == countcheck){
-	let {title:titletxt,author:authtxt,page:pagetxt} = libArr[i];
+	let {title:titletxt,author:authtxt,page:pagetxt,read:readtxt} = libArr[i];
 	let titletxtnd = document.createTextNode(`Title : ${titletxt}`);
 	let authtxtnd = document.createTextNode(`Author: ${authtxt}`);
 	let pagetxtnd = document.createTextNode(`Pages: ${pagetxt}`);
+	let readnd = document.createTextNode(`${readtxt}`);
 	let buttond = document.createTextNode(`remove book`);
+
 
 
 	titlelmnt = document.createElement("h5");
 	authelmnt = document.createElement("h5");
 	pagelmnt = document.createElement("h5");
+	readlmnt = document.createElement("button");
+	readlmnt.setAttribute(`class`,`stat`);
 	let bookcard = document.createElement('div');
 	let button = document.createElement("button");
 	button.setAttribute(`id`,`${i}`);
@@ -47,10 +72,12 @@ for(let i = 0; i < libArr.length ; i++){
 	titlelmnt.appendChild(titletxtnd);
 	authelmnt.appendChild(authtxtnd);
 	pagelmnt.appendChild(pagetxtnd);
+	readlmnt.appendChild(readnd);
 	button.appendChild(buttond);
 	bookcard.appendChild(titlelmnt);
 	bookcard.appendChild(authelmnt);
 	bookcard.appendChild(pagelmnt);
+	bookcard.appendChild(readlmnt);
 	bookcard.appendChild(button);
 	shelf.appendChild(bookcard);
 	countcheck++;
@@ -113,6 +140,21 @@ shelf.addEventListener('click', (event) => {
 		for (let r=0;r < button_arr.length; r++){
 			button_arr[r].setAttribute('id',`${r}`);
 		}
+	}
+
+	else if (elmnt.className ==`stat`){
+		let clas = elmnt.className;
+		//let prev = document.querySelector(`.${clas} + button`);
+		let prev = elmnt.nextElementSibling.id;
+		//console.log(prev);
+		let usr = elmnt.textContent;
+		//console.log(usr); 
+		let real_prev = parseInt(prev);
+		console.log(libArr[real_prev]);
+		let updated_status = libArr[real_prev].book_status(usr);
+		console.log(updated_status);
+		elmnt.textContent = updated_status;
+		
 	}
 
 });
