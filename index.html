@@ -4,14 +4,27 @@
 		<meta charset="UTF-8">
 		<meta name="viewport" content="width = device-width initial-scale = 1.0">
 		<link rel="stylesheet" href="styles.css">
-
 	</head>
 	<body class="container">
 		<section class="sec1 perim">
-		<div>
-			<button id="open-dialog">ADD BOOK</button>
+				<div class="lc1">
+					<div class="lib-hero">
+					<svg   class="lib-icon" width="5em" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12,8A3,3 0 0,0 15,5A3,3 0 0,0 12,2A3,3 0 0,0 9,5A3,3 0 0,0 12,8M12,11.54C9.64,9.35 6.5,8 3,8V19C6.5,19 9.64,20.35 12,22.54C14.36,20.35 17.5,19 21,19V8C17.5,8 14.36,9.35 12,11.54Z" /></svg>
+				</div>
+				</div>
+				<div class="lc2">
+					<div class="hero-text">
+						<h6 class="wec">Welcome to your personal online library</h6>
+						<h6 class="clik">Click the button below to add a book</h6>
+					</div>
+				</div>
+				<div class="lc3">
+					<div class="add-button">
+				<svg  id="open-dialog" width="2em" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path  id="add-button-cala" d="M20 14H14V20H10V14H4V10H10V4H14V10H20V14Z" /></svg>
+			    </div>
+			<!--<button id="open-dialog">ADD BOOK</button> -->
+			   </div>
 			<dialog id="dialo">
-				<h2>hey</h2>
 				<form action="myself.com" method="POST" id="book-info-form">
 					<label for="title">Book Title</label>
 					<input type="text" required id="title">
