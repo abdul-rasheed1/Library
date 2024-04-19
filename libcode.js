@@ -48,9 +48,9 @@ function displaylib(){
 for(let i = 0; i < libArr.length ; i++){
 	if (i == countcheck){
 	let {title:titletxt,author:authtxt,page:pagetxt,read:readtxt} = libArr[i];
-	let titletxtnd = document.createTextNode(`Title : ${titletxt}`);
-	let authtxtnd = document.createTextNode(`Author: ${authtxt}`);
-	let pagetxtnd = document.createTextNode(`Pages: ${pagetxt}`);
+	let titletxtnd = document.createTextNode(`Title  : ${titletxt}`);
+	let authtxtnd = document.createTextNode(`Author  : ${authtxt}`);
+	let pagetxtnd = document.createTextNode(`Pages   : ${pagetxt}`);
 	let readnd = document.createTextNode(`${readtxt}`);
 	let buttond = document.createTextNode(`remove book`);
 
@@ -59,12 +59,25 @@ for(let i = 0; i < libArr.length ; i++){
 	titlelmnt = document.createElement("h5");
 	authelmnt = document.createElement("h5");
 	pagelmnt = document.createElement("h5");
+	imglmnt = document.createElement('img');
 	readlmnt = document.createElement("button");
-	readlmnt.setAttribute(`class`,`stat`);
+	
+	let book_sub = document.createElement('div');
+	let bookSub = document.createElement('div');
 	let bookcard = document.createElement('div');
 	let button = document.createElement("button");
+     
+     imglmnt.setAttribute(`src`,`bookmark-outline.svg`);
+     imglmnt.setAttribute(`class`,`markimg`);
+    readlmnt.setAttribute(`class`,`stat`);
+	titlelmnt.setAttribute(`class`,`diptext`);
+	authelmnt.setAttribute(`class`,`diptext`);
+	pagelmnt.setAttribute(`class`,`diptext`);
+	book_sub.setAttribute(`class`,`book-sub`);
+	bookSub.setAttribute(`class`, `bookSub`);
 	button.setAttribute(`id`,`${i}`);
 	button.setAttribute(`class`, `remove`);
+	bookcard.setAttribute(`class`,`booktile`);
 	//console.log(bookcard.getAttribute('class'));
 
 
@@ -74,12 +87,16 @@ for(let i = 0; i < libArr.length ; i++){
 	pagelmnt.appendChild(pagetxtnd);
 	readlmnt.appendChild(readnd);
 	button.appendChild(buttond);
-	bookcard.appendChild(titlelmnt);
-	bookcard.appendChild(authelmnt);
-	bookcard.appendChild(pagelmnt);
+	book_sub.appendChild(titlelmnt);
+	book_sub.appendChild(authelmnt);
+	book_sub.appendChild(pagelmnt);
+	bookSub.appendChild(book_sub);
+	bookSub.appendChild(imglmnt);
+
+	bookcard.appendChild(bookSub);
 	bookcard.appendChild(readlmnt);
 	bookcard.appendChild(button);
-	shelf.appendChild(bookcard);
+	shelf_child.appendChild(bookcard);
 	countcheck++;
 
 
@@ -105,6 +122,7 @@ const dialoge = document.getElementById('dialo');
 const close = document.getElementById('clo');
 
 const shelf = document.querySelector('.shelf');
+const shelf_child = document.querySelector('.shelf-child');
 
 
 open.addEventListener('click',  () => { dialoge.showModal();}
@@ -126,15 +144,15 @@ bookform.addEventListener('submit', (event) => {
 	
 });
 
-shelf.addEventListener('click', (event) => {
+shelf_child.addEventListener('click', (event) => {
 	let elmnt = event.target;
 	if (elmnt.textContent == "remove book"){
 		let no = elmnt.id;
 		let real = parseInt(no);
 		console.log(no);
 		libArr.splice(real,1);
-		let no_in_dom = real + 1;
-		shelf.removeChild(shelf.childNodes[no_in_dom]);
+		//let no_in_dom = real + 1;
+		shelf_child.removeChild(shelf_child.childNodes[real]);
 		countcheck--;
 		let button_arr = document.querySelectorAll('.remove');
 		for (let r=0;r < button_arr.length; r++){
