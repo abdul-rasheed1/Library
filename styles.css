@@ -165,3 +165,40 @@ border:1px solid red;
 width:80px;
 border-radius:5px;
 }
+
+
+
+dialog{
+	width:30%;
+	height:40%;
+	border:2px solid rgb(220,137,4);
+	border-radius:10px;
+}
+
+.inps{
+padding:5px;
+margin:5px;
+width:50%;
+}
+
+form{
+	margin-top:2em;
+}
+form input{
+	margin-left:1em;
+}
+
+.labes{
+	margin:1em;
+}
+#clo{
+	margin:1em;
+	font-size:1em;
+	width:20%;
+}
+
+#clo:hover{
+	border:2px solid rgb(220,137,4);
+	width:20%;
+	border-radius:5px;
+}
