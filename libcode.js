@@ -80,6 +80,16 @@ for(let i = 0; i < libArr.length ; i++){
 	bookcard.setAttribute(`class`,`booktile`);
 	//console.log(bookcard.getAttribute('class'));
 
+if (readtxt == `NOT READ`){
+			readlmnt.style.backgroundColor = "rgb(173,52,76)";
+		
+		}
+		if (readtxt == `IN PROGRESS`){
+			readlmnt.style.backgroundColor = "rgb(251,168,35)";
+		}
+		if (readtxt == `READ`){
+			readlmnt.style.backgroundColor = "rgb(39,206,139)";
+		}
 
 
 	titlelmnt.appendChild(titletxtnd);
@@ -172,7 +182,17 @@ shelf_child.addEventListener('click', (event) => {
 		let updated_status = libArr[real_prev].book_status(usr);
 		console.log(updated_status);
 		elmnt.textContent = updated_status;
+		if (updated_status == `NOT READ`){
+			elmnt.style.backgroundColor = "rgb(173,52,76)";
 		
+		}
+		if (updated_status == `IN PROGRESS`){
+			elmnt.style.backgroundColor = "rgb(251,168,35)";
+		}
+		if (updated_status == `READ`){
+			elmnt.style.backgroundColor = "rgb(39,206,139)";
+		}
+
 	}
 
 });
